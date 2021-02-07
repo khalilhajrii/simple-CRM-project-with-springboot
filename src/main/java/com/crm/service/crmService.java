@@ -10,22 +10,23 @@ import com.crm.model.Customer;
 @Service
 public class crmService {
 	 @Autowired
-	    private CrmRepository repo;
+	public
+	CrmRepository metier;
 	 
 	 public List<Customer> listAll() {
-	        return repo.findAll();
+	        return metier.findAll();
 	    }
 	     
 	    public void save(Customer ctr) {
-	        repo.save(ctr);
+	    	metier.save(ctr);
 	    }
 	     
 	    public Customer get(long id) {
-	        return repo.findById(id).get();
+	        return metier.findById(id).get();
 	    }
 	     
 	    public void delete(long id) {
-	        repo.deleteById(id);
+	    	metier.deleteById(id);
 
 }
 }
