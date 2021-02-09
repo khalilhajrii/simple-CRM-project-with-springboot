@@ -2,3 +2,29 @@
 width: 40px;
 margin: 10px;
 }
+	
+	
+.col-sm-4 form input{
+	width: 100%;
+  overflow: hidden;
+  font-size: px;
+  padding: 8px 0;
+  margin: 30px 0;
+  border-bottom: 1px solid #808080;
+  border-top:none;
+  border-left:none;
+  border-right: none;
+	
+}
+
+.col-sm-4 form button{
+	width:100%;
+}
+
+.space{
+	margin:40px;
+}
+
+h1,h2{
+	margin:20px;
+}
