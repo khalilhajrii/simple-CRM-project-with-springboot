@@ -44,6 +44,7 @@ public class CrmController {
     public String saveStudent(@ModelAttribute("customer") Customer std) {
         service.save(std);
         return "redirect:/list";
+        
     }
 
     @RequestMapping("/edit/{id}")

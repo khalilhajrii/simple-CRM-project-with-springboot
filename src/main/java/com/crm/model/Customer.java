@@ -1,10 +1,14 @@
 package com.crm.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.sun.istack.NotNull;
+
 
 @Entity
 @Table(name="client")
@@ -13,15 +17,23 @@ public class Customer {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull
 	private String nom;
 	
+	@NotNull
 	private String prenom;
 	
+	@NotNull
+	@Column(unique=true)
 	private String Email;
 	
+	@NotNull
+	@Column(unique=true)
 	private int numero;
 	
+	@NotNull
 	private String produit;
+	
 	
 	public Customer(Long id, String nom, String prenom, String Email , int numero, String produit) {
 		 

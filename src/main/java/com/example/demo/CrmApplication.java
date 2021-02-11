@@ -22,5 +22,6 @@ public class CrmApplication {
 		CrmRepository CrmRepository = ctx.getBean(CrmRepository.class);
 		
 	}
+	
 
 }

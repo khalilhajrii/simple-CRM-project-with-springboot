@@ -28,3 +28,31 @@ margin: 10px;
 h1,h2{
 	margin:20px;
 }
+
+h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: black;
+}
+
+label#nom-error.errors{
+	color:red;
+}
+
+label#prenom-error.errors{
+	color:red;
+}
+
+label#email-error.errors{
+	color:red;
+}
+
+label#numero-error.errors{
+	color:red;
+}
+
+label#produit-error.errors{
+	color:red;
+}
