@@ -18,10 +18,10 @@ public class CrmApplication {
 
 	public static void main(String[] args) {
         ApplicationContext ctx =  SpringApplication.run(CrmApplication.class, args);
-		
-		CrmRepository CrmRepository = ctx.getBean(CrmRepository.class);
-		
+				
 	}
+	
+	
 	
 
 }

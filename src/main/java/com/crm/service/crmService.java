@@ -27,6 +27,5 @@ public class crmService {
 	     
 	    public void delete(long id) {
 	    	metier.deleteById(id);
-
-}
+        }
 }

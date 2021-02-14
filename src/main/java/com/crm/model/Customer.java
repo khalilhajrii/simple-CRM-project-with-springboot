@@ -18,6 +18,7 @@ public class Customer {
 	private Long id;
 	
 	@NotNull
+	@Column(name="nom")
 	private String nom;
 	
 	@NotNull

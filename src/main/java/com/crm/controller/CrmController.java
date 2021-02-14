@@ -27,28 +27,27 @@ public class CrmController {
 	
 
     @RequestMapping(value="/list")
-    public String viewHomePage(Model model) {
+    public String listeclients(Model model) {
         List<Customer> listcustomer = service.listAll();
         model.addAttribute("listcustomer", listcustomer);
-        System.out.print("Get / "); 
         return "index";
     }
 
     @RequestMapping(value="/new")
-    public String add(Model model) {
+    public String ajouterclient(Model model) {
         model.addAttribute("customer", new Customer());
         return "new";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveStudent(@ModelAttribute("customer") Customer std) {
-        service.save(std);
+    public String enregistrerclient(@ModelAttribute("customer") Customer cu) {
+        service.save(cu);
         return "redirect:/list";
         
     }
 
     @RequestMapping("/edit/{id}")
-    public ModelAndView showEditStudentPage(@PathVariable(name = "id") int id) {
+    public ModelAndView AfficherModifierClient(@PathVariable(name = "id") int id) {
         ModelAndView mav = new ModelAndView("new");
         Customer ctr = service.get(id);
         mav.addObject("customer", ctr);
@@ -56,8 +55,10 @@ public class CrmController {
         
     }
     @RequestMapping("/delete/{id}")
-    public String deletestudent(@PathVariable(name = "id") int id) {
+    public String supprimerClient(@PathVariable(name = "id") int id) {
         service.delete(id);
         return "redirect:/list";
     }
+    
+    
 }
