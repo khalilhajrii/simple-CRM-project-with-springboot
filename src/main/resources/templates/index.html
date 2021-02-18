@@ -1,106 +1,167 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-
-<head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="../static/css/style.css" th:href="@{css/style.css}"/>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <div class="container-fluid">
-    <img  src="../static/images/afro.png" th:src="@{images/afro.png}" class="nav-img" href="#"/>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" th:href="@{'/'}">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{'/list'}">list des clients</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{'/new'}">Ajouter un client</a>
-        </li>
-      </ul>
-    </div>
-    
-  </div>
-</nav>
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="../static/images/cover3.png" th:src="@{images/cover3.png}" class="d-block w-100" alt="...">
-    </div>
-  </div>
-</div>
-	
-	<div class="space"></div>
-	<div class="container">
-                 <div class="panel-body" align = "center" >
-                 <table class="table table-dark table-striped">
-  <thead class="thead-dark">
-    <tr>
-      		<th>ID</th>
-            <th>Nom</th>
-            <th>prenom</th>
-            <th>Email</th>
-            <th>Numero</th>
-            <th>Produit</th>
-            <th>Modifier</th>
-            <th>Supprimer</th>
-   	</tr>
-  </thead>
-  <tbody>
-      <tr  th:each="customer:${listcustomer}">
-		<td th:text="${customer.id}">ID</td>
-		<td th:text="${customer.nom}">Nom</td>
-		<td th:text="${customer.prenom}">Prenom</td>
-		<td th:text="${customer.Email}">Email</td>	
-		<td th:text="${customer.numero}">Numero</td>
-		<td th:text="${customer.produit}">Produit</td>			
-		<td>
-			<a class="btn btn-primary" th:href="@{'/edit/' + ${customer.id}}">Modifier</a>
-		</td>							    
-		<td>
-		<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Supprimer
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">supprimer client</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="../static/css/style.css"
+      th:href="@{css/style.css}"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <img
+          src="../static/images/afro.png"
+          th:src="@{images/afro.png}"
+          class="nav-img"
+          href="#"
+        />
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" th:href="@{'/'}"
+                >Accueil</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{'/list'}">list des clients</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" th:href="@{'/new'}">Ajouter un client</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="modal-body">
-        <h3>êtes-vous sûr ?</h3>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <a type="button" class="btn btn-primary" th:href="@{'/delete/'+ ${customer.id}}">Supprimer</a>
+    </nav>
+    <div
+      id="carouselExampleSlidesOnly"
+      class="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="../static/images/cover3.png"
+            th:src="@{images/cover3.png}"
+            class="d-block w-100"
+            alt="..."
+          />
+        </div>
       </div>
     </div>
-  </div>
-</div>
-			
-		</td>		    
-		</tr> 
-   
-  </tbody>
-</table>
-                    
-                 </div>
 
-            </div> 
+    <div class="space"></div>
+    <div class="container">
+      <div class="panel-body" align="center">
+        <table class="table table-dark table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>ID</th>
+              <th>Nom</th>
+              <th>prenom</th>
+              <th>Email</th>
+              <th>Numero</th>
+              <th>Produit</th>
+              <th>Modifier</th>
+              <th>Supprimer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="customer:${listcustomer}">
+              <td th:text="${customer.id}">ID</td>
+              <td th:text="${customer.nom}">Nom</td>
+              <td th:text="${customer.prenom}">Prenom</td>
+              <td th:text="${customer.Email}">Email</td>
+              <td th:text="${customer.numero}">Numero</td>
+              <td th:text="${customer.produit}">Produit</td>
+              <td>
+                <a
+                  class="btn btn-primary"
+                  th:href="@{'/edit/' + ${customer.id}}"
+                  >Modifier</a
+                >
+              </td>
+              <td>
+                <!-- Button trigger modal -->
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  Supprimer
+                </button>
 
-	
-
-</body>
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="exampleModal"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          supprimer client
+                        </h5>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <h3>êtes-vous sûr ?</h3>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <a
+                          type="button"
+                          class="btn btn-primary"
+                          th:href="@{'/delete/'+ ${customer.id}}"
+                          >Supprimer</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="space"></div>
+      </div>
+    </div>
+  </body>
 </html>

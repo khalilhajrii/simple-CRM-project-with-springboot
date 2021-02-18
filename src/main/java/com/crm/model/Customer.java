@@ -36,6 +36,8 @@ public class Customer {
 	private String produit;
 	
 	
+	
+	
 	public Customer(Long id, String nom, String prenom, String Email , int numero, String produit) {
 		 
 		 this.id = id;
